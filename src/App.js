@@ -25,13 +25,21 @@ class App extends Component {
   }
   handleSubmit(e){
     e.preventDefault();
-
-    this.setState({
-      items: [...this.state.items, {todo: this.state.todo, key: this.state.key}],
-      todo: '',
-      key: this.state.key + 1,
-      edit: false
-    })
+    
+    if(!this.state.edit){
+      this.setState({
+        items: [...this.state.items, {todo: this.state.todo, key: this.state.key}],
+        todo: '',
+        key: this.state.key + 1,
+      })
+    }
+    else{
+      this.setState({
+        items: [...this.state.items, {todo: this.state.todo, key: this.state.key}],
+        todo: '',
+        key: this.state.items[this.state.items.length - 1].key + 1,
+        edit: false
+      })}
   }
   handleClear(){
     this.setState({
@@ -49,6 +57,7 @@ class App extends Component {
     this.setState({
       items: this.state.items.filter(item => item.key !== key),
       todo: this.state.items.filter(item => item.key === key)[0].todo,
+      key: key,
       edit: true
     })
   }

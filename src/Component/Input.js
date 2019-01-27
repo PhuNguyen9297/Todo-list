@@ -22,7 +22,7 @@ export default class Input extends Component {
           <input 
             type='submit' 
             className="form-control text-capitalize btn btn-success mt-2" 
-            value={!this.props.edit? 'Add a todo': 'Edit todo'}/>
+            value={!this.props.edit? 'Add a todo' : 'Edit todo'}/>
         </form>
       </div>
     )
